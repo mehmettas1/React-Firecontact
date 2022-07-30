@@ -21,7 +21,8 @@ const FormComponent = ({info,setInfo}) => {
 
     // const name = e.target.name;
     // const value = e.target.value;
-    const{name,value}= e.target.
+    const{name,value}= e.target
+    console.log(name,value)
   }
   return (
     <Grid
@@ -51,7 +52,7 @@ const FormComponent = ({info,setInfo}) => {
             <TextField
               variant="outlined"
               name="username"
-              value={null}
+              value={info.username}
               onChange={handleChange}
               placeholder="Name"
               InputProps={{
@@ -65,8 +66,8 @@ const FormComponent = ({info,setInfo}) => {
             <TextField
               variant="outlined"
               name="phoneNumber"
-              value={null}
-              onChange={null}
+              value={info.phoneNumber}
+              onChange={handleChange}
               placeholder="Phone Number"
               InputProps={{
                 startAdornment: (
@@ -82,8 +83,8 @@ const FormComponent = ({info,setInfo}) => {
                 label="Gender"
                 name="gender"
                 variant="outlined"
-                value={null}
-                onChange={null}
+                value={info.gender}
+                onChange={handleChange}
               >
                 <MenuItem value="Female">Female</MenuItem>
                 <MenuItem value="Male">Male</MenuItem>
