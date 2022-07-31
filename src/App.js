@@ -6,7 +6,7 @@ import  {AddUser} from "./utils/functions";
 
 
 
-const initialValues={username:"",phoneNumber:"",gender:""}
+const initialValues={username:"",phoneNumber:"",gender:"NO INFO"}
 
 function App() {
   const [info, setInfo] = useState(initialValues) 
