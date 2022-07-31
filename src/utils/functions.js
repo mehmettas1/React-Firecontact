@@ -35,3 +35,8 @@ export const useFetch=()=>{
    },[])
    return{isLoading,contactList}
 }
+
+export const DeleteUser = (id)=>{
+    onst db = getDatabase(firebase);
+    const userRef=ref(db,"users/")
+}

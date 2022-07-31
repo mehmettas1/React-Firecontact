@@ -9,6 +9,9 @@ import {
   Paper,
 } from "@mui/material";
 import { useFetch } from "../../utils/functions";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const Contacts = () => {
   const { isLoading, contactList } = useFetch();
@@ -21,10 +24,10 @@ const Contacts = () => {
           <TableHead>
             <TableRow>
               <TableCell>Username</TableCell>
-              <TableCell align="right">Phone Number</TableCell>
-              <TableCell align="right">Gender</TableCell>
-              <TableCell align="right">Delete</TableCell>
-              <TableCell align="right">Edit</TableCell>
+              <TableCell align="left">Phone Number</TableCell>
+              <TableCell align="left">Gender</TableCell>
+              <TableCell align="left">Delete</TableCell>
+              <TableCell align="left">Edit</TableCell>
             </TableRow>
           </TableHead>
 
@@ -50,11 +53,11 @@ const Contacts = () => {
             ) : (
               contactList?.map((item,index)=>(
             <TableRow>
-              <TableCell textAlign="left">{item.username.toUpperCase}</TableCell>
-              <TableCell textAlign="left">{item.phoneNumber}</TableCell>
-              <TableCell textAlign="left">{item.gender}</TableCell>
-              <TableCell textAlign="left"></TableCell>
-              <TableCell textAlign="left"></TableCell>
+              <TableCell textAlign="center">{item.username.toUpperCase()}</TableCell>
+              <TableCell textAlign="center">{item.phoneNumber}</TableCell>
+              <TableCell textAlign="center">{item.gender}</TableCell>
+              <TableCell textAlign="center" onClick={DeleteUser(item.id)} ><DeleteIcon/></TableCell>
+              <TableCell textAlign="center"><EditIcon/></TableCell>
             </TableRow>
 
               ))
