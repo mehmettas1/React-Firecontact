@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Contacts from './components/contacts/Contacts';
 import FormComponent from './components/form/FormComponent';
-import  {AddUser} from "./utils/functions";
+import  {AddUser,UpdateUser} from "./utils/functions";
 
 
 
@@ -12,13 +12,20 @@ function App() {
   const [info, setInfo] = useState(initialValues) 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    AddUser(info)       
-    // console.log(info)                                                         
+    if(info.id){
+      UpdateUser(info)
+    }else{
+      AddUser(info)
+    }
+     setInfo(initialValues)  
   } 
+  const editUser = (id,username,phoneNumber,gender)=>{
+    setInfo({id,username,phoneNumber,gender})
+  }
   return (
     <div className="App">
       <FormComponent info = {info} setInfo={setInfo} handleSubmit = {handleSubmit}/>
-      <Contacts/>
+      <Contacts editUser={editUser}/>
     </div>
   );
 }
