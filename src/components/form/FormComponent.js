@@ -14,7 +14,7 @@ import {
 import { AccountCircle } from "@mui/icons-material";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 
-const FormComponent = ({info,setInfo}) => {
+const FormComponent = ({info,setInfo,handleSubmit}) => {
   const handleChange = (e)=>{
     e.preventDefault();
     // setInfo(info)
@@ -23,6 +23,7 @@ const FormComponent = ({info,setInfo}) => {
     // const value = e.target.value;
     const{name,value}= e.target
    setInfo({...info,[name]:value})
+  //  console.log(info);
   }
   return (
     <Grid
@@ -47,7 +48,7 @@ const FormComponent = ({info,setInfo}) => {
       <h2 className="contact-header">Add Contact</h2>
     
       <Box style={{ backgroundColor: "white", padding: "20px" }}>
-        <form>
+        <form onSubmit={handleSubmit} >
           <Stack spacing={3} direction="column">
             <TextField
               variant="outlined"
