@@ -1,4 +1,4 @@
-import { getDatabase ,onValue,push,ref, set} from "firebase/database";
+import { getDatabase ,onValue,push,ref, remove, set} from "firebase/database";
 import { useEffect, useState } from "react";
 import firebase from "./firebase";
 
@@ -37,6 +37,7 @@ export const useFetch=()=>{
 }
 
 export const DeleteUser = (id)=>{
-    onst db = getDatabase(firebase);
+    const db = getDatabase(firebase);
     const userRef=ref(db,"users/")
+    remove(ref(db,"users/"+id))
 }
