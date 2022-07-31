@@ -6,13 +6,13 @@ import {
   TableHead,
   TableRow,
   TableBody,
-  Paper
+  Paper,
 } from "@mui/material";
-
-
+import { useFetch } from "../../utils/functions";
 
 const Contacts = () => {
- 
+  const { isLoading, contactList } = useFetch();
+
   return (
     <div>
       <h2 className="contact-header">Contacts</h2>
@@ -26,19 +26,40 @@ const Contacts = () => {
               <TableCell align="right">Delete</TableCell>
               <TableCell align="right">Edit</TableCell>
             </TableRow>
-          </TableHead>        
-         
-          <TableBody>           
-              <TableRow>
-              <TableCell textAlign="center"></TableCell>
-              <TableCell textAlign="center"></TableCell>
-              <TableCell textAlign="center"></TableCell> 
-              <TableCell textAlign="center">
-              </TableCell> 
-              <TableCell textAlign="center">
-              </TableCell> 
-             </TableRow>      
+          </TableHead>
 
+          <TableBody>
+            {// Bilgiler gelmediği durumda Loading yazısı görünsün 
+            isLoading ? (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell colSpan={5} align="center">
+                Loading
+              </TableCell>
+            </TableRow>
+            ) : // Bilgiler olmadığı, boş olduğu durumda veri bulunamadı mesajı 
+            contactList?.length===0 ?(
+              <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell colSpan={5} align="center">
+                NO RESULT FOUND
+              </TableCell>
+            </TableRow>
+            ) : (
+              contactList?.map((item,index)=>(
+            <TableRow>
+              <TableCell textAlign="left">{item.username.toUpperCase}</TableCell>
+              <TableCell textAlign="left">{item.phoneNumber}</TableCell>
+              <TableCell textAlign="left">{item.gender}</TableCell>
+              <TableCell textAlign="left"></TableCell>
+              <TableCell textAlign="left"></TableCell>
+            </TableRow>
+
+              ))
+            )
+            }
           </TableBody>
         </Table>
       </TableContainer>
@@ -47,4 +68,3 @@ const Contacts = () => {
 };
 
 export default Contacts;
-
